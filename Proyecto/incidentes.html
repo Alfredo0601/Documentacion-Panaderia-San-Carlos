@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reportar Incidente - Panadería San Carlos</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <div class="main-content" id="contenidoIncidentes" hidden>
+        <div class="top-bar">
+            <h4>
+                <i class="bi bi-exclamation-triangle"></i>
+                Reportar Incidente
+            </h4>
+
+            <span class="umg-badge">
+                <i class="bi bi-mortarboard-fill"></i> UMG
+            </span>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6">
+                <div class="table-container shadow">
+                    <h5 class="fw-bold text-danger mb-3">
+                        <i class="bi bi-truck"></i>
+                        Reportar Problema en Ruta
+                    </h5>
+
+                    <p class="text-muted small">
+                        Selecciona uno de los pedidos asignados a tu cuenta.
+                        Al enviar el reporte, el pedido será cancelado
+                        y sus productos volverán al stock.
+                    </p>
+
+                    <div id="alertaSinRutas"
+                         class="alert alert-warning d-none">
+                        No tienes pedidos en ruta.
+                        Toma un pedido en “Mis Rutas” primero.
+                    </div>
+
+                    <form id="formIncidente">
+                        <div class="mb-3">
+                            <label for="cmbPedido" class="form-label">
+                                Pedido en Ruta *
+                            </label>
+
+                            <select class="form-select"
+                                    id="cmbPedido"
+                                    required>
+                                <option value="">
+                                    Cargando pedidos...
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cmbVendedor" class="form-label">
+                                Vendedor
+                            </label>
+
+                            <input type="text"
+                                   class="form-control bg-light"
+                                   id="cmbVendedor"
+                                   readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ruta" class="form-label">
+                                Ruta
+                            </label>
+
+                            <input type="text"
+                                   class="form-control bg-light"
+                                   id="ruta"
+                                   readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="sucursal" class="form-label">
+                                Sucursal
+                            </label>
+
+                            <input type="text"
+                                   class="form-control bg-light"
+                                   id="sucursal"
+                                   readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="motivo" class="form-label">
+                                Motivo *
+                            </label>
+
+                            <select class="form-select"
+                                    id="motivo"
+                                    required>
+                                <option value="">-- Seleccione --</option>
+                                <option value="Falla mecánica">
+                                    Falla mecánica
+                                </option>
+                                <option value="Llanta pinchada">
+                                    Llanta pinchada
+                                </option>
+                                <option value="Accidente de tránsito">
+                                    Accidente de tránsito
+                                </option>
+                                <option value="Tráfico pesado">
+                                    Tráfico pesado
+                                </option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">
+                                Descripción
+                            </label>
+
+                            <textarea class="form-control"
+                                      id="descripcion"
+                                      rows="3"
+                                      maxlength="2000"
+                                      placeholder="Detalles del problema..."></textarea>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-danger w-100 fw-bold py-3"
+                                id="btnReportar"
+                                disabled>
+                            <i class="bi bi-send"></i>
+                            Reportar y Cancelar Pedido
+                        </button>
+                    </form>
+
+                    <p class="small text-muted mt-3 mb-0"
+                       id="estadoIncidentes"
+                       role="status"
+                       aria-live="polite">
+                        Conectando con Firebase...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/api.js"></script>
+    <script src="js/menu.js"></script>
+
+    <script type="module" src="js/incidentes.js"></script>
+</body>
+</html>

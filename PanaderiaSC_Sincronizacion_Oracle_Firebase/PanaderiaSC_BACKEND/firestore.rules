@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // El backend usa credenciales de servicio. Acceso móvil se habilitará
+    // por vendedor/rol después de integrar Firebase Authentication.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

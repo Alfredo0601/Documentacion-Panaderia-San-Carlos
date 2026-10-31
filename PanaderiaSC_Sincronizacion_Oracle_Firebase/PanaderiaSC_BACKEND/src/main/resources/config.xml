@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<configuration>
+  
+<sistema>
+	<nombre>BACKEND</nombre>
+</sistema>
+
+<db>
+  	<host>localhost</host>
+  	<port>1521</port>
+  	<service>XE</service>
+  	<user>system</user>
+  	<pass>CONFIGURA_TU_PASSWORD_LOCAL</pass>
+  	<schema>system</schema>
+  	<version>1.0.0.0</version>
+ </db>
+ 
+</configuration>
